@@ -44,7 +44,17 @@ class Generador:
         else:
             self.FuncCode.append(target + " = " + left + " " + op + " " + right + ";\n")
 
-    
+    def AddExpressionPOT(self,target, left, right):
+        if self.MainCode:
+            self.Code.append(target + " = " + "math.Pow("+left+", "+right+");\n")
+        else:
+            self.FuncCode.append(target + " = " + "math.Pow("+left+", "+right+");\n")
+            
+    def AddExpressionMOD(self,target, left, right, op):
+        if self.MainCode:
+            self.Code.append(target + " = " + "float64(int("+left+") "+op+" int("+right+"));\n")
+        else:
+            self.FuncCode.append(target + " = " + "float64(int("+left+") "+op+" int("+right+"));\n")
 
     # Agregando una etiqueta
     def AddLabel(self,label):

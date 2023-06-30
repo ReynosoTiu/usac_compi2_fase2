@@ -83,7 +83,7 @@ class Aritmetica(Instruccion):
                 #number ^ number
                 #Analizar potencia en golang necesita libreria
                 self.tipo = TIPO.NUMBER
-                gen.AddExpression(newTemp,izq.valor,der.valor,"^")
+                gen.AddExpressionPOT(newTemp,izq.valor,der.valor)
                 return Value(newTemp,True,self.tipo)
             return Excepcion("Semantico", "Tipo Erroneo de operacion para **.", self.fila, self.columna)
         
@@ -92,7 +92,7 @@ class Aritmetica(Instruccion):
             if self.OperacionIzq.tipo == TIPO.NUMBER and self.OperacionDer.tipo == TIPO.NUMBER:
                 #number % number
                 self.tipo = TIPO.NUMBER
-                gen.AddExpression(newTemp,izq.valor,der.valor,"%")
+                gen.AddExpressionMOD(newTemp,izq.valor,der.valor,"%")
                 return Value(newTemp,True,self.tipo)
             return Excepcion("Semantico", "Tipo Erroneo de operacion para %.", self.fila, self.columna)
         if self.operador == OperadorAritmetico.UMENOS: #NEGACION UNARIA

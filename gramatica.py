@@ -94,7 +94,7 @@ t_MAS           = r'\+'
 t_MENOS         = r'-'
 t_POR           = r'\*'
 t_DIV           = r'/'
-t_POT           = r'\^'
+t_POT           = r'\*\*'
 t_MOD           = r'%'
 t_MENOR         = r'<'
 t_MENORIGUAL    = r'<='
@@ -187,12 +187,11 @@ lexer = lex.lex(reflags = re.IGNORECASE)
 precedence = (
     ('left','OR'),
     ('left','AND'),
-    ('right','UNOT'),
     ('left','IGUALIGUAL','DISTINTO', 'MENOR','MENORIGUAL','MAYOR','MAYORIGUAL'),
     ('left','MAS','MENOS','COMA'),
     ('left','DIV','POR','MOD'),
     ('nonassoc','POT'),
-    ('right','UMENOS'),
+    ('right','UNOT', 'UMENOS'),
     )
 
 
@@ -598,7 +597,7 @@ def p_expresion_binaria(t):
         t[0] = Aritmetica(OperadorAritmetico.POR,t[1],t[3],t.lineno(2), find_column(input, t.slice[2]))
     elif t[2] == '/':
         t[0] = Aritmetica(OperadorAritmetico.DIV, t[1],t[3], t.lineno(2), find_column(input, t.slice[2]))
-    elif t[2] == '^':
+    elif t[2] == '**':
         t[0] = Aritmetica(OperadorAritmetico.POT,t[1],t[3],t.lineno(2), find_column(input, t.slice[2]))
     elif t[2] == '%':
         t[0] = Aritmetica(OperadorAritmetico.MOD,t[1],t[3],t.lineno(2), find_column(input, t.slice[2]))

@@ -4040,6 +4040,18 @@ state 111
     (96) expresion -> expresion . AND expresion
     (97) expresion -> expresion . OR expresion
 
+    MAS             reduce using rule 99 (expresion -> NOT expresion .)
+    MENOS           reduce using rule 99 (expresion -> NOT expresion .)
+    POR             reduce using rule 99 (expresion -> NOT expresion .)
+    DIV             reduce using rule 99 (expresion -> NOT expresion .)
+    POT             reduce using rule 99 (expresion -> NOT expresion .)
+    MOD             reduce using rule 99 (expresion -> NOT expresion .)
+    MENORIGUAL      reduce using rule 99 (expresion -> NOT expresion .)
+    MENOR           reduce using rule 99 (expresion -> NOT expresion .)
+    MAYORIGUAL      reduce using rule 99 (expresion -> NOT expresion .)
+    MAYOR           reduce using rule 99 (expresion -> NOT expresion .)
+    IGUALIGUAL      reduce using rule 99 (expresion -> NOT expresion .)
+    DISTINTO        reduce using rule 99 (expresion -> NOT expresion .)
     AND             reduce using rule 99 (expresion -> NOT expresion .)
     OR              reduce using rule 99 (expresion -> NOT expresion .)
     PUNTOCOMA       reduce using rule 99 (expresion -> NOT expresion .)
@@ -4072,31 +4084,19 @@ state 111
     PARC            reduce using rule 99 (expresion -> NOT expresion .)
     COMA            reduce using rule 99 (expresion -> NOT expresion .)
     CORC            reduce using rule 99 (expresion -> NOT expresion .)
-    MAS             shift and go to state 96
-    MENOS           shift and go to state 97
-    POR             shift and go to state 98
-    DIV             shift and go to state 99
-    POT             shift and go to state 100
-    MOD             shift and go to state 101
-    MENORIGUAL      shift and go to state 102
-    MENOR           shift and go to state 103
-    MAYORIGUAL      shift and go to state 104
-    MAYOR           shift and go to state 105
-    IGUALIGUAL      shift and go to state 106
-    DISTINTO        shift and go to state 107
 
-  ! MAS             [ reduce using rule 99 (expresion -> NOT expresion .) ]
-  ! MENOS           [ reduce using rule 99 (expresion -> NOT expresion .) ]
-  ! POR             [ reduce using rule 99 (expresion -> NOT expresion .) ]
-  ! DIV             [ reduce using rule 99 (expresion -> NOT expresion .) ]
-  ! POT             [ reduce using rule 99 (expresion -> NOT expresion .) ]
-  ! MOD             [ reduce using rule 99 (expresion -> NOT expresion .) ]
-  ! MENORIGUAL      [ reduce using rule 99 (expresion -> NOT expresion .) ]
-  ! MENOR           [ reduce using rule 99 (expresion -> NOT expresion .) ]
-  ! MAYORIGUAL      [ reduce using rule 99 (expresion -> NOT expresion .) ]
-  ! MAYOR           [ reduce using rule 99 (expresion -> NOT expresion .) ]
-  ! IGUALIGUAL      [ reduce using rule 99 (expresion -> NOT expresion .) ]
-  ! DISTINTO        [ reduce using rule 99 (expresion -> NOT expresion .) ]
+  ! MAS             [ shift and go to state 96 ]
+  ! MENOS           [ shift and go to state 97 ]
+  ! POR             [ shift and go to state 98 ]
+  ! DIV             [ shift and go to state 99 ]
+  ! POT             [ shift and go to state 100 ]
+  ! MOD             [ shift and go to state 101 ]
+  ! MENORIGUAL      [ shift and go to state 102 ]
+  ! MENOR           [ shift and go to state 103 ]
+  ! MAYORIGUAL      [ shift and go to state 104 ]
+  ! MAYOR           [ shift and go to state 105 ]
+  ! IGUALIGUAL      [ shift and go to state 106 ]
+  ! DISTINTO        [ shift and go to state 107 ]
   ! AND             [ shift and go to state 108 ]
   ! OR              [ shift and go to state 109 ]
 
