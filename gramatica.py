@@ -702,6 +702,9 @@ def p_expresion_Split(t):
     '''expresion : ID PUNTO Rsplit PARA expresion PARC'''
     t[0] = Split(t[1],t[5],t.lineno(1), find_column(input, t.slice[1]))
 
+def p_error(t):
+    print(t)
+
 import ply.yacc as yacc
 parser = yacc.yacc()
 
