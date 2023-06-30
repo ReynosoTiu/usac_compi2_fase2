@@ -30,7 +30,7 @@ class Llamada(Instruccion):
             
             for expresion in self.parametros: # SE OBTIENE EL VALOR DEL PARAMETRO EN LA LLAMADA
                 
-                resultExpresion = expresion.interpretar(tree, table)
+                resultExpresion = expresion.interpretar(tree, table,gen)
                 
                 
 
@@ -39,7 +39,7 @@ class Llamada(Instruccion):
                 #________________trucate________________________________________
                 if result.nombre == "truncate":
                     #creacion simbolo
-                    simbolo = Simbolo(str(result.parametros[contador]['identificador']),expresion.tipo,False, self.fila, self.columna, resultExpresion)
+                    simbolo = Simbolo(str(result.parametros[contador]['identificador']),expresion.tipo,False, self.fila, self.columna, resultExpresion,1)
                     resultTabla = nuevaTabla.setTabla(simbolo)
                     if isinstance(resultTabla, Excepcion): 
                         return resultTabla
@@ -47,7 +47,7 @@ class Llamada(Instruccion):
                 #_________________round____________________________________________
                 if result.nombre == "round":
                     #creacion simbolo
-                    simbolo = Simbolo(str(result.parametros[contador]['identificador']),expresion.tipo,False,self.fila, self.columna, resultExpresion)
+                    simbolo = Simbolo(str(result.parametros[contador]['identificador']),expresion.tipo,False,self.fila, self.columna, resultExpresion,1)
                     resultTabla = nuevaTabla.setTabla(simbolo)
                     if isinstance(resultTabla, Excepcion): 
                         return resultTabla
@@ -56,7 +56,7 @@ class Llamada(Instruccion):
                 #_________________typeof____________________________________________
                 if result.nombre == "typeof":
                     #creacion simbolo
-                    simbolo = Simbolo(str(result.parametros[contador]['identificador']),expresion.tipo,False,self.fila, self.columna, resultExpresion)
+                    simbolo = Simbolo(str(result.parametros[contador]['identificador']),expresion.tipo,False,self.fila, self.columna, resultExpresion,1)
                     resultTabla = nuevaTabla.setTabla(simbolo)
                     if isinstance(resultTabla, Excepcion): 
                         return resultTabla
@@ -64,7 +64,7 @@ class Llamada(Instruccion):
                 #_________________ length ____________________________________________
                 if result.nombre == "length":
                     #creacion simbolo
-                    simbolo = Simbolo(str(result.parametros[contador]['identificador']),expresion.tipo,expresion.arreglo,self.fila, self.columna, resultExpresion)
+                    simbolo = Simbolo(str(result.parametros[contador]['identificador']),expresion.tipo,expresion.arreglo,self.fila, self.columna, resultExpresion,1)
                     resultTabla = nuevaTabla.setTabla(simbolo)
                     if isinstance(resultTabla, Excepcion): 
                         return resultTabla
@@ -74,7 +74,7 @@ class Llamada(Instruccion):
                 if result.parametros[contador]["tipo"] == expresion.tipo:  # VERIFICACION DE TIPO
                     # CREACION DE SIMBOLO E INGRESARLO A LA TABLA DE SIMBOLOS
                     
-                    simbolo = Simbolo(str(result.parametros[contador]['identificador']), result.parametros[contador]['tipo'],expresion.arreglo, self.fila, self.columna, resultExpresion)
+                    simbolo = Simbolo(str(result.parametros[contador]['identificador']), result.parametros[contador]['tipo'],expresion.arreglo, self.fila, self.columna, resultExpresion,1)
                     resultTabla = nuevaTabla.setTabla(simbolo)
                     if isinstance(resultTabla, Excepcion): return resultTabla
 

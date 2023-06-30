@@ -429,11 +429,11 @@ def p_funcion_noparam(t):
 
 def p_funcionSinTipo(t):
     ''' funcion : Rfunc ID PARA parametros PARC LLAVEA instrucciones LLAVEC '''
-    t[0]=Funcion(TIPO.VOID,t[2],t[4],t[9],t.lineno(1), find_column(input, t.slice[1]))
+    t[0]=Funcion(TIPO.VOID,t[2],t[4],t[7],t.lineno(1), find_column(input, t.slice[1]))
 
 def p_funcion_noparamSinTipo(t):
     '''funcion : Rfunc ID PARA PARC LLAVEA instrucciones LLAVEC'''
-    t[0]=Funcion(TIPO.VOID,t[2],[],t[8],t.lineno(1), find_column(input, t.slice[1]))
+    t[0]=Funcion(TIPO.VOID,t[2],[],t[6],t.lineno(1), find_column(input, t.slice[1]))
 
 def p_paramtros(t):
     '''parametros : parametros COMA parametro'''
