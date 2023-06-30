@@ -1,0 +1,154 @@
+INICIO DEL PROGRAMA
+Ingrese su nombre: 
+wuilmar
+Bienvenido wuilmar
+Validando Continue
+El valor del ciclo con continue es: 1
+El valor del ciclo con continue es: 2
+El valor del ciclo con continue es: 3
+El valor del ciclo con continue es: 4
+El valor del ciclo con continue es: 5
+Se salta esta iteracion
+El valor del ciclo con continue es: 7
+El valor del ciclo con continue es: 8
+El valor del ciclo con continue es: 9
+El valor del ciclo con continue es: 10
+CASTEOS
+DOUBLE
+STRING
+CHAR
+2
+INT
+50
+STRING
+INT
+DOUBLE
+INT
+DOUBLE
+BOOLEAN
+======================
+Funciones Nativas
+nativaNUM = 1024.65
+Truncate = 1024
+Round = 1025
+=============================
+nativaSTRING = Animos, Ya caSi Termina El CURso
+ToLower = animos, ya casi termina el curso
+ToUpper = ANIMOS, YA CASI TERMINA EL CURSO
+Length = 32
+=============CALCULADORA==============
+Ingrese el primer número:
+
+5
+Ingrese el segundo número:
+
+10
+Ingrese la operación que desea realizar: (+,-,*,/,**,%)
+
++
+El resultado de 5+10 es igual a 15
+¿Desea realizar otra operación? (true, false)
+
+false
+Calculadora finalizada correctamente
+=============RECURSIVIDAD==============
+Bien par
+Bien impar
+Bien ackermann
+Mover disco de 1 a 3
+Mover disco de 1 a 2
+Mover disco de 3 a 2
+Mover disco de 1 a 3
+Mover disco de 2 a 1
+Mover disco de 2 a 3
+Mover disco de 1 a 3
+=============ARREGLOS==============
+============VECTOR DESORDENADO================
+vectorNumeros[0] = 2
+vectorNumeros[1] = 26
+vectorNumeros[2] = 1
+vectorNumeros[3] = 135
+vectorNumeros[4] = 15
+vectorNumeros[5] = 0
+vectorNumeros[6] = 76
+vectorNumeros[7] = 84
+vectorNumeros[8] = 7
+vectorNumeros[9] = 44
+vectorNumeros[10] = 51
+vectorNumeros[11] = 9
+vectorNumeros[12] = 945
+vectorNumeros[13] = 9
+vectorNumeros[14] = 73
+============VECTOR ORDENADO================
+vectorNumeros[0] = 0
+vectorNumeros[1] = 1
+vectorNumeros[2] = 2
+vectorNumeros[3] = 7
+vectorNumeros[4] = 9
+vectorNumeros[5] = 9
+vectorNumeros[6] = 15
+vectorNumeros[7] = 26
+vectorNumeros[8] = 44
+vectorNumeros[9] = 51
+vectorNumeros[10] = 73
+vectorNumeros[11] = 76
+vectorNumeros[12] = 84
+vectorNumeros[13] = 135
+vectorNumeros[14] = 945
+Agregando a alumno #0
+Agregando a alumno #1
+Agregando a alumno #2
+Agregando a alumno #3
+El nombre del alumno es: GABRIEL ORLANDO AJSIVINAC XICAY
+El carnet del alumno es: 201213010
+La edad del alumno es: 22
+La nota del alumno es: 73
+El nombre del alumno es: FERNANDO AUGUSTO ARMIRA RAMÍREZ
+El carnet del alumno es: 201503961
+La edad del alumno es: 19
+La nota del alumno es: 100
+El nombre del alumno es: JOSÉ ALEJANDRO BARRIOS RODAS
+El carnet del alumno es: 3149675670901
+La edad del alumno es: 25
+La nota del alumno es: 74
+El nombre del alumno es: JORGE LUIS ARGUETA RIVERA
+El carnet del alumno es: 201404334
+La edad del alumno es: 24
+La nota del alumno es: 97
+CUBO
+Dimension i = 0
+Dimension j = 0
+5
+10
+15
+20
+Dimension j = 1
+25
+30
+35
+40
+=====================================
+Dimension i = 1
+Dimension j = 0
+45
+50
+55
+60
+Dimension j = 1
+65
+70
+75
+80
+=====================================
+Dimension i = 2
+Dimension j = 0
+85
+90
+95
+100
+Dimension j = 1
+105
+110
+115
+120
+=====================================

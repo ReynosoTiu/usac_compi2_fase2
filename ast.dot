@@ -1,0 +1,23 @@
+digraph {
+rankdir=UD
+node[shape=record]
+n0[label="RAIZ"];
+n1[label="INSTRUCCIONES"];
+n0->n1;
+n2[label="DECLARACION"];
+n1->n2;
+n3[label="TIPO.NUMBER"];
+n2->n3;
+n4[label="a"];
+n2->n4;
+n5[label="PRIMITIVO"];
+n2->n5;
+n6[label="1"];
+n5->n6;
+n7[label="IMPRIMIR"];
+n1->n7;
+n8[label="IDENTIFICADOR"];
+n7->n8;
+n9[label="a"];
+n8->n9;
+}
