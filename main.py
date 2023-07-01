@@ -1,17 +1,6 @@
-# CORS -> Cross Origin Resource Sharing
-# Si no existe el CORS, no se puede acceder a los recursos de un servidor desde otro servidor
-from Analizador_Sintactico import ejecutar_entrada
-from src.Tabla_Simbolos.generador import Generador
-from src.Tabla_Simbolos.arbol import Arbol
-from src.Tabla_Simbolos.tabla_simbolos import TablaSimbolos
-from src.Tabla_Simbolos.Exception import Exception
-from Analizador_Lexico import errores, tokens, lexer
+from Analizador_Sintactico import ejecutar_entrada, getTablaSimbolos, getErrores
 from flask import Flask, request, jsonify
-import json
 from flask_cors import CORS
-from flask.helpers import url_for
-from werkzeug.utils import redirect
-from src.Instrucciones.FUNCION import Function
 
 
 app = Flask(__name__)
@@ -25,16 +14,25 @@ def saludo():
 # def Last():
 #     return LastExecution
 
-@app.route('/analizar', methods = ["POST","GET"])
+@app.route('/analizar', methods = ["POST"])
 def compilar():
     data = request.json
-    
-    
     consola = ejecutar_entrada(data['analizar'])
     datos = {
         "consola": consola
     }
     return jsonify(datos)
+
+@app.route('/reporte/TablaSimbolo', methods=['GET'])
+def process_tabla_simbolo():
+    # Devuelve una respuesta
+    tabla_simbolo = getTablaSimbolos()
+    datos = {
+        "Tabla_Simbolo": tabla_simbolo
+    }
+    return jsonify(datos)
+
+
     # if request.method == "POST":
     #     entrada = request.data.decode("utf-8")
     #     entrada = json.loads(entrada)

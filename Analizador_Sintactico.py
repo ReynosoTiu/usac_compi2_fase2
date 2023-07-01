@@ -26,6 +26,8 @@ from src.Instrucciones.Return import Return
 
 from src.Tabla_Simbolos.generador import Generador
 import sys
+tsg = None
+ast = None
 limit = sys.getrecursionlimit()
 #print('Before changing, limit of stack =', limit)
 # New limit
@@ -418,13 +420,15 @@ def ejecutar_entrada(entrada):
     # genAux.cleanAll(); # Limpia todos los archivos anteriores
     # generador = None
     # generador = genAux.getInstance()
-    
+
+    global tsg
+    global ast    
+
     instrucciones = parse(entrada)
     ast = Arbol(instrucciones)
     tsg = TablaSimbolos()
     ast.setTsglobal(tsg)
 
-    rep = "<table><tr><th>Nombre</th><th>Tipo</th><th>Ambito</th>"
     for instruccion in ast.getInstr():
         #if not (isinstance(instruccion, Function)):
         value = instruccion.interpretar(ast, tsg)
@@ -432,14 +436,13 @@ def ejecutar_entrada(entrada):
             ast.getErrores().append(value)
                 # aqui es opcional el que se muestren los errores en consola
                 # ast.updateConsola(value.toString())
-
+    print(ast.getTablaReporte())
     return generador.getCode()
-    rep+="<th>Posicion</th></tr>"
-    rep+=tsg.htable
-    rep+="</table>"
-# print(rep)
-# Imprimiendo lista de errores
-# for err in ast.getErrores():
-    # print(err.toString())
 
+def getTablaSimbolos():
+    return ast.getTablaReporte()
+
+def getErrores():
+    for err in ast.getErrores():
+        print(err)
 

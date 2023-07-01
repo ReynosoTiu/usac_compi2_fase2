@@ -12,7 +12,7 @@ class TablaSimbolos:
         self.recTemps = False
         self.size = 0
         self.name = name
-        self.htable = ""
+        self.tabla_reporte = []
         if anterior != None:
             self.size = self.anterior.size
             
@@ -20,15 +20,6 @@ class TablaSimbolos:
         return self.tabla
     
     def setTabla(self, id, tipo, inHeap, find = True):
-        # if find:
-        #     tablaActual = self
-        #     while tablaActual != None:
-        #         if id in tablaActual.tabla:
-        #             tablaActual.tabla[id].setTipo(tipo)
-        #             tablaActual.tabla[id].setInHeap(inHeap)
-        #             return tablaActual.tabla[id]
-        #         else:
-        #             tablaActual = tablaActual.anterior
         if id in self.tabla:
             self.tabla[id].setTipo(tipo)
             self.tabla[id].setInHeap(inHeap)
@@ -37,25 +28,12 @@ class TablaSimbolos:
             simbolo = Simbolo(id,tipo,self.size,self.anterior == None, inHeap)
             self.size += 1
             self.tabla[id] = simbolo
-            rep = "<tr>"
-            rep += "<td>"
-            rep += simbolo.ide
-            rep += "</td>"
-            rep += "<td>"
-            rep += str(simbolo.type)
-            rep += "</td>"
-            rep += "<td>"
-            rep += self.name
-            rep += "</td>"
-            rep += "<td>"
-            rep += str(simbolo.pos)
-            rep += "</td>"
-            rep += "</tr>"
+            itetm = {'id': simbolo.ide, 'type': simbolo.type, 'name': self.name, 'pos': simbolo.pos }
             temp = self
             ent = self
             while ent.anterior != None:
                 ent = ent.anterior
-            ent.htable += rep
+            self.tabla_reporte.append(itetm)
             return temp.tabla[id]
 
     def setTablaFuncion(self, simbolo):
@@ -81,3 +59,6 @@ class TablaSimbolos:
             else:
                 tablaActual = tablaActual.anterior
         return Exception("Semantico", "Variable no encontrada.", simbolo.getFila(), simbolo.getColumna())
+
+    def getTablaReporte(self):
+        return self.tabla_reporte

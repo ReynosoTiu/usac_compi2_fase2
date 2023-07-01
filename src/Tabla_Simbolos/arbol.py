@@ -10,6 +10,7 @@ class Arbol:
         self.tsglobal = None
         self.errores = []
         self.tsgInterpretada = {}
+        self.tabla_reporte = []
 
     # Hacer los getters y setters de cada atributo
 
@@ -90,3 +91,6 @@ class Arbol:
 
     def setTsglobal(self, tsglobal):
         self.tsglobal = tsglobal
+
+    def getTablaReporte(self):
+        return self.tabla_reporte
