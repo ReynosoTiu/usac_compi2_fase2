@@ -1,8 +1,8 @@
 import re
 import ply.lex as lex
-
+from src.Tabla_Simbolos.Exception import Exception
 errores = []
-
+input = ""
 reserved = {
     'console'     :   'RTconsole',
     'log'         :   'RTlog',
@@ -162,9 +162,21 @@ def t_newline(t):
 # Caracteres ignorados
 t_ignore = " \t"
 
+def setInput(inp):
+    global input
+    input = inp
+
 #Error
 def t_error(t):
+    errores.append(Exception("Lexico", t.value[0] , t.lexer.lineno, find_column(input, t)))
     t.lexer.skip(1)
+
+def getErroresLexicos():
+    return errores
+
+def setErroresLexicos():
+    global errores
+    errores = []
 
 def find_column(inp, t):
     line_start = inp.rfind('\n', 0, t.lexpos) + 1

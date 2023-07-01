@@ -53,7 +53,6 @@ class Identificador(Abstract):
             return ret
 
         else:
-            print("-ACCS--")
             generator.addComment("Acceso a variable struct")
             # verificar si el identificador existe en la tabla de simbolos
             struct = tabla.getTabla(self.ide)

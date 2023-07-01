@@ -34,17 +34,21 @@ class Function(Abstract):
             for parametro in self.parametros:
                 if parametro['tipo'] == 'struct':
                     simbolo = entorno.setTabla(parametro['id'], parametro['tipo'], True)
+                    arbol.tabla_reporte.append([simbolo.ide,str(simbolo.type), entorno.name, simbolo.pos])
                 elif not isinstance(parametro['tipo'], List):
                     simbolo = entorno.setTabla(parametro['id'], parametro['tipo'], (
                                 parametro['tipo'] == 'string' or parametro['tipo'] == 'array' or parametro[
                             'tipo'] == 'struct'))
+                    
+                    arbol.tabla_reporte.append([simbolo.ide,str(simbolo.type), entorno.name, simbolo.pos])
                 else:
                     simbolo = entorno.setTabla(parametro['id'], parametro['tipo'][0], True)
                     simbolo.setTipoAux(parametro['tipo'][1])
                     if parametro['tipo'][0] == 'struct':
                         struct = arbol.getStruct(parametro['tipo'][1])
                         simbolo.setParams(struct.getParams())
-
+                        arbol.tabla_reporte.append([simbolo.ide,str(simbolo.type), entorno.name, simbolo.pos])
+                    arbol.tabla_reporte.append([simbolo.ide,str(simbolo.type), entorno.name, simbolo.pos])
         generador.addBeginFunc(self.identificador)
 
         for instruccion in self.instrucciones:

@@ -29,7 +29,7 @@ class Declaracion(Abstract):
         elif str(self.tipo) == str(value.getTipo()):
             inHeap = value.getTipo() == TIPO.STRING
             simbolo = tabla.setTabla(self.ide, value.getTipo(), inHeap, self.find)
-            arbol.tabla_reporte.append([simbolo.ide,str(simbolo.type),simbolo.pos])
+            arbol.tabla_reporte.append([simbolo.ide,str(simbolo.type), tabla.name, simbolo.pos])
         else:
             generator.addComment('Error, tipo de dato diferente declarado.')
             result = Exception("Semantico", "Tipo de dato diferente declarado.", self.fila, self.columna)

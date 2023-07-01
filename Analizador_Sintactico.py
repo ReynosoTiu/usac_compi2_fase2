@@ -1,5 +1,5 @@
 import ply.yacc as yacc
-from Analizador_Lexico import tokens, lexer, errores, find_column
+from Analizador_Lexico import tokens, lexer, errores, find_column, getErroresLexicos, setErroresLexicos, setInput
 from src.Expresiones.aritmetica import Aritmetica
 from src.Expresiones.primitivos import Primitivos
 from src.Expresiones.relacional import Relacionales
@@ -371,26 +371,26 @@ def p_expresion_boolean(t):
     else:
         t[0] = Primitivos(TIPO.BOOLEAN, False, t.lineno(1), find_column(input, t.slice[1]))
 
-        
-def p_error(t):
-    #print(" Error sintáctico en '%s'" % t.value)
-     # get formatted representation of stack
-    stack_state_str = ' '.join([symbol.type for symbol in parser.symstack][1:])
 
-    print('Syntax error in input! Parser State:{} {} . {}'
-          .format(parser.state,
-                  stack_state_str,
-                  t))
+errores2 = []
+def p_error(t):
+    global errores2
+    errores2.append(Exception("Sintáctico", t.value[0] , t.lexer.lineno, find_column(input, t)))
+    
 
 input = ''
 
 def parse(inp):
     global errores
     global parser
-    errores = []
-    parser = yacc.yacc()
     global input
     input = inp
+    setErroresLexicos()
+    setInput(inp)
+    lexer.input(input)
+    errores = []
+    parser = yacc.yacc()
+    
     lexer.lineno = 1
     return parser.parse(inp)
 
@@ -401,15 +401,15 @@ console.log(a);
 console.log(a);
 '''
 
-def test_lexer(lexer):
-    while True:
-        tok = lexer.token()
-        if not tok:
-            break  # No more input
-        # print(tok)
+# def test_lexer(lexer):
+#     while True:
+#         tok = lexer.token()
+#         if not tok:
+#             break  # No more input
+#         # print(tok)
 
-lexer.input(entrada)
-test_lexer(lexer)
+
+# test_lexer(lexer)
 
 def ejecutar_entrada(entrada):
     generador = Generador()
@@ -436,13 +436,19 @@ def ejecutar_entrada(entrada):
             ast.getErrores().append(value)
                 # aqui es opcional el que se muestren los errores en consola
                 # ast.updateConsola(value.toString())
-    print(ast.getTablaReporte())
     return generador.getCode()
 
 def getTablaSimbolos():
     return ast.tabla_reporte
 
 def getErrores():
+    arr = []
+    for err in getErroresLexicos():
+        arr.append({'tipo': err.tipo, 'descripcion': err.desc, 'fila': err.fila, 'columna': err.columna})
+    for err in errores2:
+        arr.append({'tipo': err.tipo, 'descripcion': err.desc, 'fila': err.fila, 'columna': err.columna})
     for err in ast.getErrores():
-        print(err)
+        arr.append({'tipo': err.tipo, 'descripcion': err.desc, 'fila': err.fila, 'columna': err.columna})
+    return arr
+
 
