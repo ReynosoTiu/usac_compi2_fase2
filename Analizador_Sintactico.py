@@ -440,7 +440,7 @@ def ejecutar_entrada(entrada):
     return generador.getCode()
 
 def getTablaSimbolos():
-    return ast.getTablaReporte()
+    return ast.tabla_reporte
 
 def getErrores():
     for err in ast.getErrores():

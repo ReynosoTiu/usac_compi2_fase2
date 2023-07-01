@@ -27,6 +27,7 @@ def compilar():
 def process_tabla_simbolo():
     # Devuelve una respuesta
     tabla_simbolo = getTablaSimbolos()
+    print(tabla_simbolo)
     datos = {
         "Tabla_Simbolo": tabla_simbolo
     }

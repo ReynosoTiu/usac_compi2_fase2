@@ -29,7 +29,7 @@ class Declaracion(Abstract):
         elif str(self.tipo) == str(value.getTipo()):
             inHeap = value.getTipo() == TIPO.STRING
             simbolo = tabla.setTabla(self.ide, value.getTipo(), inHeap, self.find)
-            arbol.tabla_reporte.append({'id': simbolo.ide, 'type': simbolo.type, 'name': self.name, 'pos': simbolo.pos })
+            arbol.tabla_reporte.append([simbolo.ide,str(simbolo.type),simbolo.pos])
         else:
             generator.addComment('Error, tipo de dato diferente declarado.')
             result = Exception("Semantico", "Tipo de dato diferente declarado.", self.fila, self.columna)
@@ -48,7 +48,8 @@ class Declaracion(Abstract):
             generator.putLabel(value.falseLbl)
             generator.setStack(tempPos, "0")
             generator.putLabel(tempLbl)
-            arbol.tabla_reporte.append({'id': simbolo.ide, 'type': simbolo.type, 'name': self.name, 'pos': simbolo.pos })
+           # arbol.tabla_reporte.append([simbolo.ide,str(simbolo.type),simbolo.pos])
+            #arbol.tabla_reporte.append({'id': simbolo.ide, 'type': simbolo.type, 'name': self.name, 'pos': simbolo.pos })
         else:
             generator.setStack(tempPos, value.value)
         generator.addComment('Finalizando declaracion de variable')
